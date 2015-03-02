@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="web_gallery_view_product_product_form" model="ir.ui.view">
+            <field name="name">product.product.gallery</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Gallery">
+                        <field name="web_gallery_image_ids" />
+                        <newline />
+                        <field name="web_gallery_video_ids" />
+                        <newline />
+                        <field name="web_gallery_doc_ids" />
+                    </page>
+                </notebook>
+            </field>
+        </record>
+    </data>
+</openerp>

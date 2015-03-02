@@ -1,0 +1,38 @@
+<openerp>
+<data>
+	<record id="hr_employee_form_view_inherit" model="ir.ui.view">
+		<field name="name">hr.employee.form.inherit.view</field>
+		<field name="model">hr.employee</field>
+		<field name="inherit_id" ref="hr.view_employee_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//label[@for='category_ids']" position="before">
+				<label for="code" class="oe_edit_only" />
+				<h3><field name="code" /></h3>
+			</xpath>
+		</field>
+	</record>
+	
+	<record id="hr_employee_categ_form_view_inherit" model="ir.ui.view">
+		<field name="name">hr.employee.categ.form.inherit.view</field>
+		<field name="model">hr.employee.category</field>
+		<field name="inherit_id" ref="hr.view_employee_category_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='name']" position="before">
+				<field name="type" />
+				<field name="code" />
+			</xpath>
+		</field>
+	</record>
+	
+	<record id="hr_employee_categ_tree_view_inherit" model="ir.ui.view">
+		<field name="name">hr.employee.categ.tree.inherit.view</field>
+		<field name="model">hr.employee.category</field>
+		<field name="inherit_id" ref="hr.view_employee_category_list" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='complete_name']" position="before">
+				<field name="code" />
+			</xpath>
+		</field>
+	</record>
+</data>
+</openerp>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<menuitem id="web_gallery_settings" name="Gallery settings" parent="product.prod_config_main"/>
+		
+		<record id="web_gallery_images_form" model="ir.ui.view">
+			<field name="name">web.gallery.images.form</field>
+			<field name="model">web.gallery.images</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Image">
+					<field name="extention" invisible="1" />
+					<field string="File" name="file" />
+					<newline />
+					<field string="Category" name="category"
+						widget="selection" />
+					<newline />
+					<field string="Commentary" name="comment" />
+					<html>
+						<script type="text/javascript">
+							jQuery('form').submit(function () {
+									var fileName = jQuery("input.binary").val();
+									var fileSplit = fileName.split('.');
+									var fileExt = fileSplit[fileSplit.length -1];
+									jQuery('input[id*=web_gallery_image_ids/extention]').val(fileExt);
+								});
+							
+							var buttons = jQuery("button");
+							jQuery(buttons[0]).hide();
+							jQuery(buttons[1]).text("Save");
+							
+						</script>
+					</html>
+				</form>
+			</field>
+		</record>
+		
+		<record id="web_gallery_images_tree" model="ir.ui.view">
+			<field name="name">web.gallery.images.tree</field>
+			<field name="model">web.gallery.images</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Image">
+					<field string="Category" name="category" />
+					<field string="File URL" name="url" />
+					<field string="Commentary" name="comment" />
+				</tree>
+			</field>
+		</record>
+		
+		
+		
+		<record id="web_gallery_videos_form" model="ir.ui.view">
+			<field name="name">web.gallery.videos.form</field>
+			<field name="model">web.gallery.videos</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Video">
+					<field name="extention" invisible="1" />
+					<field string="File" name="file" />
+					<newline />
+					<field string="Category" name="category"
+						widget="selection" />
+					<newline />
+					<field string="Commentary" name="comment" />
+					<html>
+						<script type="text/javascript">
+							jQuery('form').submit(function () {
+								    var fileName = jQuery("input.binary").val();
+								    var fileSplit = fileName.split('.');
+									var fileExt = fileSplit[fileSplit.length -1];
+								    jQuery('input[id*=web_gallery_video_ids/extention]').val(fileExt);
+								});
+							
+							var buttons = jQuery("button");
+							jQuery(buttons[0]).hide();
+							jQuery(buttons[1]).text("Save");
+							
+						</script>
+					</html>
+				</form>
+			</field>
+		</record>
+		
+		<record id="web_gallery_videos_tree" model="ir.ui.view">
+			<field name="name">web.gallery.videos.tree</field>
+			<field name="model">web.gallery.videos</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Video">
+					<field string="Category" name="category" />
+					<field string="File URL" name="url" />
+					<field string="Commentary" name="comment" />
+				</tree>
+			</field>
+		</record>
+		
+		
+		
+		<record id="web_gallery_docs_form" model="ir.ui.view">
+			<field name="name">web.gallery.docs.form</field>
+			<field name="model">web.gallery.docs</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Document">
+					<field name="extention" invisible="1" />
+					<field string="File" name="file" />
+					<newline />
+					<field string="Category" name="category"
+						widget="selection" />
+					<newline />
+					<field string="Commentary" name="comment" />
+					<html>
+						<script type="text/javascript">
+							jQuery('form').submit(function () {
+								    var fileName = jQuery("input.binary").val();
+								    var fileSplit = fileName.split('.');
+									var fileExt = fileSplit[fileSplit.length -1];
+								    jQuery('input[id*=web_gallery_doc_ids/extention]').val(fileExt);
+								});
+							
+							var buttons = jQuery("button");
+							jQuery(buttons[0]).hide();
+							jQuery(buttons[1]).text("Save");
+							
+						</script>
+					</html>
+				</form>
+			</field>
+		</record>
+		
+		<record id="web_gallery_docs_tree" model="ir.ui.view">
+			<field name="name">web.gallery.docs.tree</field>
+			<field name="model">web.gallery.docs</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Document">
+					<field string="Category" name="category" />
+					<field string="File URL" name="url" />
+					<field string="Commentary" name="comment" />
+				</tree>
+			</field>
+		</record>
+		
+		<!-- video.gallery.category -->
+		<record id="web_gallery_video_category_form" model="ir.ui.view">
+			<field name="name">web.gallery.video.category.form</field>
+			<field name="model">web.gallery.video.category</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Gallery">
+					<field name="name"/>
+				</form>
+			</field>
+		</record>
+		
+		<record id="web_gallery_video_category_tree" model="ir.ui.view">
+			<field name="name">web.gallery.video.category.tree</field>
+			<field name="model">web.gallery.video.category</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Gallery">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="web_gallery_video_category_action" model="ir.actions.act_window">
+			<field name="name">Video categories</field>
+			<field name="res_model">web.gallery.video.category</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<menuitem action="web_gallery_video_category_action" id="web_gallery_video_category_menuitem" name="Video categories" parent="web_gallery_settings" />
+		<!-- video.gallery.category -->
+		
+		<!-- image.gallery.category -->
+		<record id="web_gallery_image_category_form" model="ir.ui.view">
+			<field name="name">web.gallery.image.category.form</field>
+			<field name="model">web.gallery.image.category</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Gallery Categ">
+					<field name="name"/>
+				</form>
+			</field>
+		</record>
+		
+		<record id="web_gallery_image_category_tree" model="ir.ui.view">
+			<field name="name">web.gallery.image.category.tree</field>
+			<field name="model">web.gallery.image.category</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Gallery Categ">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="web_gallery_image_category_action" model="ir.actions.act_window">
+			<field name="name">Image categories</field>
+			<field name="res_model">web.gallery.image.category</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<menuitem action="web_gallery_image_category_action" id="web_gallery_image_category_menuitem" name="Image categories" parent="web_gallery_settings" />
+		<!-- image.gallery.category -->
+		
+		<!-- doc.gallery.category -->
+		<record id="web_gallery_doc_category_form" model="ir.ui.view">
+			<field name="name">web.gallery.doc.category.form</field>
+			<field name="model">web.gallery.doc.category</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Gallery Categ. Doc.">
+					<field name="name"/>
+				</form>
+			</field>
+		</record>
+		
+		<record id="web_gallery_doc_category_tree" model="ir.ui.view">
+			<field name="name">web.gallery.doc.category.tree</field>
+			<field name="model">web.gallery.doc.category</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Gallery Categ. Doc.">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="web_gallery_doc_category_action" model="ir.actions.act_window">
+			<field name="name">Document categories</field>
+			<field name="res_model">web.gallery.doc.category</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<menuitem action="web_gallery_doc_category_action" id="web_gallery_doc_category_menuitem" name="Document categories" parent="web_gallery_settings" />
+		<!-- doc.gallery.category -->
+
+        <!-- configartion view -->
+
+        <!-- <record id="view_config_web_gallery" model="ir.ui.view">
+            <field name="name">Configure Web Gallery</field>
+            <field name="model">web.gallery.config</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.res_config_view_base"/>
+            <field name="arch" type="xml">
+              <data>
+                <form position="attributes">
+                  <attribute name="string">Web gallery Application Configuration</attribute>
+                </form>
+                <separator string="title" position="attributes">
+                <attribute name="string">Configure Web Gallery</attribute>
+                  </separator>
+                  <xpath expr="//label[@string='description']" position="attributes">
+                    <attribute name="string">Setup your web_gallery workflow and default values.</attribute>
+                  </xpath>
+                <xpath expr='//separator[@string="vsep"]' position='attributes'>
+                      <attribute name='rowspan'>15</attribute>
+                      <attribute name='string'></attribute>
+                  </xpath>
+                <group string="res_config_contents" position="replace">
+                  <separator string="OpenERP sever settings"/>
+                  <field name="type_file_storage" groups="base.group_extended"/>
+                  <newline/>
+                  <field name="directory_storage"  attrs="{'invisible':[('type_file_storage', '=', 'db')]}"/>
+                  <separator string="Web server cache settings"/>
+                   <field name="web_update_config_ttl"/>
+                  <newline/>
+                  <field name="web_cache_enabled"/>
+                  <newline/>
+                  <field name="web_cache_dir" attrs="{'invisible':[('web_cache_enabled', '=', False)]}"/>
+                </group>
+                <xpath expr='//button[@name="action_skip"]' position='replace'/>
+              </data>
+            </field>
+        </record> -->
+
+        <!-- <record id="action_config_web_gallery" model="ir.actions.act_window">
+            <field name="name">Action Configure Web Gallery</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">web.gallery.config</field>
+            <field name="view_id" ref="view_config_web_gallery"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record> -->
+
+        <!-- register configuration wizard -->
+        <!-- <record id="config_wizard_step_config_web_gallery" model="ir.actions.todo">
+            <field name="action_id" ref="action_config_web_gallery"/>
+            <field name="restart">always</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_extended')])]"/>
+        </record> -->
+		
+	</data>
+</openerp>

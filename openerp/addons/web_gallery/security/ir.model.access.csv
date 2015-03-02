@@ -1,0 +1,8 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_web_gallery_video_category_all","web.gallery.video.category all","model_web_gallery_video_category","base.group_web_gallery",1,1,1,1
+"access_web_gallery_image_category_all","web.gallery.image.category all","model_web_gallery_image_category","base.group_web_gallery",1,1,1,1
+"access_web_gallery_doc_category_all","web.gallery.doc.category all","model_web_gallery_doc_category","base.group_web_gallery",1,1,1,1
+"access_web_gallery_images_all","web.gallery.images all","model_web_gallery_images","base.group_web_gallery",1,1,1,1
+"access_web_gallery_videos_all","web.gallery.videos all","model_web_gallery_videos","base.group_web_gallery",1,1,1,1
+"access_web_gallery_docs_all","web.gallery.docs all","model_web_gallery_docs","base.group_web_gallery",1,1,1,1
+

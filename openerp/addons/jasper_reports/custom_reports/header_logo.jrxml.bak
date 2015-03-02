@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="header_logo" pageWidth="270" pageHeight="50" columnWidth="270" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="90851fd9-e691-4de6-b755-58f40ce8ff72">
+	<property name="ireport.zoom" value="2.5937424601000023"/>
+	<property name="ireport.x" value="4"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Company_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT rp."name"
+, rpa.street
+, rc.rml_footer1
+, rc.rml_header1
+FROM res_company rc
+INNER JOIN res_partner rp ON rp."id" = rc.partner_id
+INNER JOIN res_partner_address rpa ON rpa.partner_id = rp."id"
+WHERE rc."id" = $P{Company_ID}
+;]]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="street" class="java.lang.String"/>
+	<field name="rml_footer1" class="java.lang.String"/>
+	<field name="rml_header1" class="java.lang.String"/>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement uuid="fe5d8371-c943-4297-878a-52872359c399" x="0" y="0" width="268" height="20"/>
+				<box leftPadding="0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="de59be4c-01bc-4394-bfbe-796ddcd9f415" x="0" y="19" width="268" height="11"/>
+				<box leftPadding="0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{street}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="de59be4c-01bc-4394-bfbe-796ddcd9f415" x="0" y="29" width="268" height="11"/>
+				<box leftPadding="0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rml_footer1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="de59be4c-01bc-4394-bfbe-796ddcd9f415" x="0" y="39" width="268" height="11"/>
+				<box leftPadding="0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rml_header1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

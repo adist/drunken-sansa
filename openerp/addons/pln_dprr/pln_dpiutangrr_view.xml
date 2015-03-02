@@ -1,0 +1,194 @@
+<openerp>
+<data>
+	<menuitem name="PRR"
+            id="main_menu_pln"
+            sequence="40"/>
+    <menuitem id="menu_action_pln_master" parent="main_menu_pln" name="Master" sequence="10"/>
+    	<menuitem id="pln_menu_partner_form" parent="menu_action_pln_master" name="Pelanggan" action="base.action_partner_form" sequence="10"/>
+    	<menuitem action="hr.open_view_employee_list_my" id="pln_menu_open_view_employee_list_my" sequence="20" parent="menu_action_pln_master" name="User"/>
+    	<menuitem action="hr.open_view_categ_form" id="pln_menu_view_employee_category_form" parent="menu_action_pln_master" sequence="30" name="Area / Unit Up"/>
+    <menuitem id="menu_action_pln_trx" parent="main_menu_pln" name="Transaksi" sequence="20"/>
+    <menuitem id="menu_action_pln_config" parent="main_menu_pln" name="Konfigurasi" sequence="30"/>
+            
+	<record id="pln_dpiutangrr_line_form_view" model="ir.ui.view">
+		<field name="name">pln.dpiutangrr_line.form.view</field>
+		<field name="model">pln.dpiutangrr_line</field>
+		<field name="arch" type="xml">
+			<form string="BA Detail" version="7.0">
+			<header>
+				<button name="button_valid" type="object" states="draft" string="Set Valid" class="oe_highlight" />
+				<button name="button_cancel" type="object" states="valid" string="Batalkan!"  />
+				<button name="button_draft" type="object" states="cancel" string="Re-draft" class="oe_highlight" />
+				<field name="state" widget="statusbar" statusbar_visible="draft,valid" />
+			</header>
+			<sheet>
+				<group>
+					<group>
+						<field name="piutangrr_id" required="True"/>
+						<field name="partner_id" />
+						<label for="date_start" string="Tahun" />
+						<div>
+							<field name="date_start" /> - <field name="date_end" />
+						</div>
+						<field name="range" />
+						<field name="complete" widget="progressbar" />
+					</group>
+					<group>
+						<field name="piutang_rp" />
+						<field name="piutang_nontagihan_rp" />
+						<field name="bpju_rp" />
+						<field name="ppn_rp" />
+						<field name="materai_rp" />
+						<field name="klp_rp" />
+						<field name="ujl_rp" />
+						<field name="piutangrr_rp" />
+					</group>
+				</group>
+			</sheet>
+			</form>
+		</field>
+	</record>
+	
+	<record id="pln_dpiutangrr_line_tree_view" model="ir.ui.view">
+		<field name="name">pln.dpiutangrr_line.tree.view</field>
+		<field name="model">pln.dpiutangrr_line</field>
+		<field name="arch" type="xml">
+			<tree string="BA Detail">
+				<field name="piutangrr_id" />
+				<field name="partner_id" />
+				<field name="range" />
+				<field name="state" invisible="1"/>
+				<field name="complete" widget="progressbar" />		
+				<field name="piutangrr_rp" />	
+			</tree>
+		</field>
+	</record>	
+	
+	<record id="action_detail_piutangrr" model="ir.actions.act_window">
+	    <field name="name">BA Detail</field>
+	    <field name="type">ir.actions.act_window</field>
+	    <field name="res_model">pln.dpiutangrr_line</field>
+	    <field name="view_type">form</field>
+	    <field name="view_id" ref="pln_dpiutangrr_line_tree_view"/>
+	    <field name="help" type="html">
+	      <p class="oe_view_nocontent_create">
+	        Klik tombol tersebut!. 
+	      </p><p>
+	        Ketika tombol tersebut diklik, 
+	        itu berarti Anda akan menambahkan data baru 
+	        secara manual. 
+	        Klik tombol 'Import' untuk menambahkan data
+	        secara bersamaan.
+	      </p>
+	    </field>
+	</record>
+	<menuitem action="action_detail_piutangrr" id="menu_action_ba_detail" parent="menu_action_pln_trx" sequence="10"/>
+	
+	<record id="pln_dpiutangrr_form_view" model="ir.ui.view">
+		<field name="name">pln.dpiutangrr.form.view</field>
+		<field name="model">pln.dpiutangrr</field>
+		<field name="arch" type="xml">
+			<form string="BA Detail" version="7.0">
+			<header>
+				<button name="button_valid" type="object" states="draft" string="Set Valid" class="oe_highlight" />
+				<button name="button_cancel" type="object" states="valid" string="Batalkan!"  />
+				<button name="button_draft" type="object" states="cancel" string="Re-draft" class="oe_highlight" />
+				<field name="state" widget="statusbar" statusbar_visible="draft,valid" />
+			</header>
+			<sheet>
+				<group>
+					<group>
+						<field name="name" />
+						<field name="date" />
+					</group>
+					<group>
+						<label for="valid_from" string="Tahun" />
+						<div>
+							<field name="valid_from" /> - <field name="valid_to" />
+						</div>
+					</group>
+				</group>
+				<group>
+					<group>
+						<field name="lines" nolabel="1">
+							<form string="BA Detail" version="7.0">
+							<header>
+								<button name="button_valid" type="object" states="draft" string="Set Valid" class="oe_highlight" />
+								<button name="button_cancel" type="object" states="valid" string="Batalkan!"  />
+								<button name="button_draft" type="object" states="cancel" string="Re-draft" class="oe_highlight" />
+								<field name="state" widget="statusbar" statusbar_visible="draft,valid" />
+							</header>
+							<sheet>
+								<group>
+									<group>
+										<field name="piutangrr_id" invisible="1	"/>
+										<field name="partner_id" />
+										<label for="date_start" string="Tahun" />
+										<div>
+											<field name="date_start" /> - <field name="date_end" />
+										</div>
+										<field name="range" />
+										<field name="complete" widget="progressbar" />
+									</group>
+									<group>
+										<field name="piutang_rp" />
+										<field name="piutang_nontagihan_rp" />
+										<field name="bpju_rp" />
+										<field name="ppn_rp" />
+										<field name="materai_rp" />
+										<field name="klp_rp" />
+										<field name="ujl_rp" />
+										<field name="piutangrr_rp" />
+									</group>
+								</group>
+							</sheet>
+							</form>
+							<tree string="BA Detail">
+								<field name="piutangrr_id" invisible="1" />
+								<field name="partner_id" />
+								<field name="range" />
+								<field name="state" invisible="1"/>
+								<field name="complete" widget="progressbar" />	
+								<field name="piutangrr_rp" />		
+							</tree>
+						</field>
+					</group>
+				</group>
+			</sheet>
+			</form>
+		</field>
+	</record>
+	
+	<record id="pln_dpiutangrr_tree_view" model="ir.ui.view">
+		<field name="name">pln.dpiutangrr.tree.view</field>
+		<field name="model">pln.dpiutangrr</field>
+		<field name="arch" type="xml">
+			<tree string="BA Detail">
+				<field name="name" />
+				<field name="date" />
+				<field name="state" />		
+			</tree>
+		</field>
+	</record>	
+	
+	<record id="action_piutangrr" model="ir.actions.act_window">
+	    <field name="name">Dokumen BA</field>
+	    <field name="type">ir.actions.act_window</field>
+	    <field name="res_model">pln.dpiutangrr</field>
+	    <field name="view_type">form</field>
+	    <field name="view_id" ref="pln_dpiutangrr_tree_view"/>
+	    <field name="help" type="html">
+	      <p class="oe_view_nocontent_create">
+	        Klik tombol tersebut!. 
+	      </p><p>
+	        Ketika tombol tersebut diklik, 
+	        itu berarti Anda akan menambahkan data baru 
+	        secara manual. 
+	        Klik tombol 'Import' untuk menambahkan data
+	        secara bersamaan.
+	      </p>
+	    </field>
+	</record>
+	<menuitem action="action_piutangrr" id="menu_action_ba_document" parent="menu_action_pln_trx" sequence="20"/>
+</data>
+</openerp>

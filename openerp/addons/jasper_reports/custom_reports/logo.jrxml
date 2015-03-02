@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="header_logo" pageWidth="75" pageHeight="50" columnWidth="75" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="90851fd9-e691-4de6-b755-58f40ce8ff72">
+	<property name="ireport.zoom" value="1.6105100000000012"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Company_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT rp."name"
+, rp.street
+, rc.rml_header1
+, rp.city
+FROM res_company rc
+INNER JOIN res_partner rp ON rp."id" = rc.partner_id
+WHERE rc."id" = $P{Company_ID}
+;]]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="street" class="java.lang.String"/>
+	<field name="rml_header1" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement uuid="cfdcd2e6-da6e-4d35-bb66-4866de8cf0ca" x="0" y="0" width="75" height="50"/>
+				<imageExpression><![CDATA["../../jasper_reports/custom_reports/LogoHB.PNG"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

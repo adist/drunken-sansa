@@ -1,0 +1,83 @@
+<openerp>
+<data>
+	<record id="pln_docprr_form_view" model="ir.ui.view">
+		<field name="name">pln.docprr.form.view</field>
+		<field name="model">pln.docprr</field>
+		<field name="arch" type="xml">
+			<form string="Kelengkapan Piutang RR" version="7.0">
+			<sheet>
+			<group>
+				<group>
+					<field name="partner_id" />
+					<field name="nomor_ba" />
+				</group>
+				<group>
+					<field name="complete" widget="progressbar" />
+					<field name="coordinate" />
+				</group>
+			</group>
+			<notebook>
+			<page string="Image Information">
+				<group>
+					<group>
+						<field name="img_taglist" widget='image' class="oe_left oe_avatar" />
+						<field name="img_tul601" widget='image' class="oe_left oe_avatar" />
+						<field name="img_tul603" widget='image' class="oe_left oe_avatar" />
+						<field name="img_pkbrampung" widget='image' class="oe_left oe_avatar" />
+						<field name="img_babrampung" widget='image' class="oe_left oe_avatar" />
+						<field name="img_pdlmutasin" widget='image' class="oe_left oe_avatar" />
+					</group>
+					<group>
+						<field name="img_tug9kwh" widget='image' class="oe_left oe_avatar" />
+						<field name="img_tug9mcb" widget='image' class="oe_left oe_avatar" />
+						<field name="img_tug9kbl" widget='image' class="oe_left oe_avatar" />
+						<field name="img_kwhmeter" widget='image' class="oe_left oe_avatar" />
+						<field name="img_stannumber" widget='image' class="oe_left oe_avatar" />
+					</group>
+				</group>
+			</page>
+			<!-- <page string='Other Image'>
+				<group>
+					<field name="multi_images" widget="image_multi"/>
+				</group>
+			</page> -->
+			</notebook>
+			<field name="note" placeholder="Tulis catatan disini!" />
+			</sheet>
+			</form>
+		</field>
+	</record>
+	
+	<record id="pln_docprr_tree_view" model="ir.ui.view">
+		<field name="name">pln.docprr.tree.view</field>
+		<field name="model">pln.docprr</field>
+		<field name="arch" type="xml">
+			<tree string="Kelengkapan Piutang RR">
+				<field name="partner_id" />
+				<field name="nomor_ba" />		
+				<field name="complete" widget="progressbar" />
+			</tree>
+		</field>
+	</record>
+	
+	<record id="action_detail_docprr" model="ir.actions.act_window">
+	    <field name="name">Kelengkapan PRR</field>
+	    <field name="type">ir.actions.act_window</field>
+	    <field name="res_model">pln.docprr</field>
+	    <field name="view_type">form</field>
+	    <field name="view_id" ref="pln_docprr_tree_view"/>
+	    <field name="help" type="html">
+	      <p class="oe_view_nocontent_create">
+	        Klik tombol tersebut!. 
+	      </p><p>
+	        Ketika tombol tersebut diklik, 
+	        itu berarti Anda akan menambahkan data baru 
+	        secara manual. 
+	        Klik tombol 'Import' untuk menambahkan data
+	        secara bersamaan.
+	      </p>
+	    </field>
+	</record>
+	<menuitem action="action_detail_docprr" id="menu_action_docprr" parent="menu_action_pln_trx" sequence="30"/>
+</data>
+</openerp>
