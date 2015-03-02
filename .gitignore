@@ -1,0 +1,4 @@
+.hg/*
+.bzr/*
+.project
+.pydevproject
