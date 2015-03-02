@@ -2,3 +2,4 @@
 .bzr/*
 .project
 .pydevproject
+.hgignore
